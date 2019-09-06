@@ -27,8 +27,8 @@
         <input type="email" class="form_item" id="email" v-model="registerForm.email">
         <label for="password">パスワード</label>
         <input type="password" class="form_item" id="password" v-model="registerForm.password">
-        <label for="password_confirmation">パスワード（確認用）</label>
-        <input type="password" class="form_item" id="password_confirmation" v-model="registerForm.password">
+        <label for="password-confirmation">パスワード（確認用）</label>
+        <input type="password" class="form_item" id="password-confirmation" v-model="registerForm.password_confirmation">
         <div class="form_btn">
           <button type="submit" class="btn submit_btn" >新規登録</button>
         </div>
@@ -58,8 +58,10 @@ export default {
     login () {
       console.log(this.loginForm)
     },
-    register () {
-      console.log(this.registerForm)
+    async register () {
+      await this.$store.dispatch('auth/register', this.registerForm)
+
+      this.$router.push('/')
     }
   }
 }
