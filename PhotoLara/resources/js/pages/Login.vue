@@ -58,7 +58,7 @@ export default {
     async login () {
       await this.$store.dispatch('auth/login', this.loginForm)
 
-      this.$router.push('/')
+      this.$router.push('index')
     },
     async register () {
       await this.$store.dispatch('auth/register', this.registerForm)
