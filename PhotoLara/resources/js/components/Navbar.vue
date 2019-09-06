@@ -15,6 +15,9 @@
           お名前
         </li>
         <li class="nav-item">
+          <button class="btn btn-link" @click="logout">ログアウト</button>
+        </li>
+        <li class="nav-item">
           <RouterLink class="btn btn-link" to="/login">
           登録する
           </RouterLink>
@@ -23,3 +26,15 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    async logout () {
+      await this.$store.dispatch('auth/logout')
+
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
