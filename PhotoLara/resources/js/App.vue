@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <Navibar />
+      <Navbar />
     </header>
     <main>
       <div class="container">
@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import Navibar from './components/Navibar.vue'
+import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    Navibar,
+    Navbar,
     Footer
   }
 }
