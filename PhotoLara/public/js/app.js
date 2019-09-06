@@ -1910,7 +1910,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return this.$store.dispatch('auth/login', this.loginForm);
 
               case 2:
-                this.$router.push('index');
+                this.$router.push('/');
 
               case 3:
               case "end":
@@ -20098,6 +20098,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_PhotoList_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/PhotoList.vue */ "./resources/js/pages/PhotoList.vue");
 /* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+
 
 
 
@@ -20108,7 +20110,14 @@ var routes = [{
   component: _pages_PhotoList_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/login',
-  component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+  beforeEnter: function beforeEnter(to, from, next) {
+    if (_store__WEBPACK_IMPORTED_MODULE_4__["default"].getters['auth/check']) {
+      next('/');
+    } else {
+      next();
+    }
+  }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
