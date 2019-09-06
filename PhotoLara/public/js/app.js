@@ -1783,6 +1783,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
+    },
+    username: function username() {
+      return this.$store.getters['auth/username'];
+    }
+  },
   methods: {
     logout: function () {
       var _logout = _asyncToGenerator(
@@ -1796,7 +1804,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return this.$store.dispatch('auth/logout');
 
               case 2:
-                this.$router.push('/login');
+                this.$router.push('/');
 
               case 3:
               case "end":
@@ -3274,30 +3282,32 @@ var render = function() {
         _c("ul", { staticClass: "nav-list" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c("li", { staticClass: "nav-item" }, [
-            _vm._v("\n        お名前\n      ")
-          ]),
+          _vm.isLogin
+            ? _c("li", { staticClass: "nav-item" }, [
+                _vm._v("\n        " + _vm._s(_vm.username) + "\n      ")
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", { staticClass: "nav-item" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-link", on: { click: _vm.logout } },
-              [_vm._v("ログアウト")]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "nav-item" },
-            [
-              _c(
-                "RouterLink",
-                { staticClass: "btn btn-link", attrs: { to: "/login" } },
-                [_vm._v("\n        登録する\n        ")]
+          _vm.isLogin
+            ? _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-link", on: { click: _vm.logout } },
+                  [_vm._v("ログアウト")]
+                )
+              ])
+            : _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "RouterLink",
+                    { staticClass: "btn btn-link", attrs: { to: "/login" } },
+                    [_vm._v("\n        ログイン・新規登録\n        ")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          )
         ])
       ])
     ],
@@ -20090,7 +20100,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var state = {
   user: null
 };
-var getters = {};
+var getters = {
+  check: function check(state) {
+    return !!state.user;
+  },
+  username: function username(state) {
+    return state.user ? state.user.name : '';
+  }
+};
 var mutations = {
   setUser: function setUser(state, user) {
     state.user = user;
