@@ -3414,31 +3414,38 @@ var render = function() {
         _c("h1", [_vm._v("PhotoLara")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "nav-menu" }, [
-        _c("ul", { staticClass: "nav-list" }, [
+      _c("div", { staticClass: "nav" }, [
+        _c("ul", { staticClass: "nav--list" }, [
           _vm._m(0),
           _vm._v(" "),
           _vm.isLogin
-            ? _c("li", { staticClass: "nav-item" }, [
-                _vm._v("\n        " + _vm._s(_vm.username) + "\n      ")
+            ? _c("li", { staticClass: "nav--item" }, [
+                _c("i", { staticClass: "icon ion-md-person" }),
+                _vm._v(_vm._s(_vm.username) + "\n      ")
               ])
             : _vm._e(),
           _vm._v(" "),
           _vm.isLogin
-            ? _c("li", { staticClass: "nav-item" }, [
+            ? _c("li", { staticClass: "nav--item" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-link", on: { click: _vm.logout } },
+                  {
+                    staticClass: "button button--link",
+                    on: { click: _vm.logout }
+                  },
                   [_vm._v("ログアウト")]
                 )
               ])
             : _c(
                 "li",
-                { staticClass: "nav-item" },
+                { staticClass: "nav--item" },
                 [
                   _c(
                     "RouterLink",
-                    { staticClass: "btn btn-link", attrs: { to: "/login" } },
+                    {
+                      staticClass: "button button--link",
+                      attrs: { to: "/login" }
+                    },
                     [_vm._v("\n        ログイン・新規登録\n        ")]
                   )
                 ],
@@ -3455,8 +3462,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("button", { staticClass: "btn" }, [
+    return _c("li", { staticClass: "nav--item" }, [
+      _c("button", { staticClass: "button" }, [
         _c("i", { staticClass: "icon ion-md-add" }),
         _vm._v("\n          投稿する\n        ")
       ])
@@ -3489,7 +3496,7 @@ var render = function() {
       _c(
         "li",
         {
-          staticClass: "tab_item",
+          staticClass: "tab--item",
           class: { "tab_item--active": _vm.tab === 1 },
           on: {
             click: function($event) {
@@ -3503,7 +3510,7 @@ var render = function() {
       _c(
         "li",
         {
-          staticClass: "tab_item",
+          staticClass: "tab--item",
           class: { "tab_item--active": _vm.tab === 2 },
           on: {
             click: function($event) {
@@ -3570,8 +3577,8 @@ var render = function() {
                   expression: "loginForm.email"
                 }
               ],
-              staticClass: "form_item",
-              attrs: { type: "email", id: "login_email" },
+              staticClass: "form--item",
+              attrs: { type: "email", id: "login-email" },
               domProps: { value: _vm.loginForm.email },
               on: {
                 input: function($event) {
@@ -3614,8 +3621,8 @@ var render = function() {
                   expression: "loginForm.password"
                 }
               ],
-              staticClass: "form_item",
-              attrs: { type: "password", id: "login_password" },
+              staticClass: "form-item",
+              attrs: { type: "password", id: "login-password" },
               domProps: { value: _vm.loginForm.password },
               on: {
                 input: function($event) {
@@ -3688,7 +3695,7 @@ var render = function() {
                   expression: "registerForm.name"
                 }
               ],
-              staticClass: "form_item",
+              staticClass: "form--item",
               attrs: { type: "text", id: "username" },
               domProps: { value: _vm.registerForm.name },
               on: {
@@ -3730,7 +3737,7 @@ var render = function() {
                   expression: "registerForm.email"
                 }
               ],
-              staticClass: "form_item",
+              staticClass: "form--item",
               attrs: { type: "email", id: "email" },
               domProps: { value: _vm.registerForm.email },
               on: {
@@ -3772,7 +3779,7 @@ var render = function() {
                   expression: "registerForm.password"
                 }
               ],
-              staticClass: "form_item",
+              staticClass: "form--item",
               attrs: { type: "password", id: "password" },
               domProps: { value: _vm.registerForm.password },
               on: {
@@ -3798,7 +3805,7 @@ var render = function() {
                   expression: "registerForm.password_confirmation"
                 }
               ],
-              staticClass: "form_item",
+              staticClass: "form--item",
               attrs: { type: "password", id: "password-confirmation" },
               domProps: { value: _vm.registerForm.password_confirmation },
               on: {
@@ -3827,10 +3834,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form_btn" }, [
+    return _c("div", { staticClass: "form--btn" }, [
       _c(
         "button",
-        { staticClass: "btn submit_btn", attrs: { type: "submit" } },
+        { staticClass: "button button--submit", attrs: { type: "submit" } },
         [_vm._v("ログイン")]
       )
     ])
@@ -3839,10 +3846,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form_btn" }, [
+    return _c("div", { staticClass: "form--btn" }, [
       _c(
         "button",
-        { staticClass: "btn submit_btn", attrs: { type: "submit" } },
+        { staticClass: "button button--submit", attrs: { type: "submit" } },
         [_vm._v("新規登録")]
       )
     ])

@@ -1,0 +1,17 @@
+.button{
+  border: none;
+  font-size: 16px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #99cfff;
+  }
+
+  &--submit{
+    width: 206px;
+    margin-top: 10px;
+    padding: 5px 50px;
+    background-color: #d4eafd;
+
+  }
+}
