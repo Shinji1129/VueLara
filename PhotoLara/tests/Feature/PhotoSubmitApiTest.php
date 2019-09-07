@@ -65,7 +65,7 @@ class PhotoSubmitApiTest extends TestCase
      */
     public function should_ファイル保存エラーの場合はDBへの挿入はしない()
     {
-　　　　　Storage::shouldReceive('cloud')
+        Storage::shouldReceive('cloud')
             ->once()
             ->andReturnNull();
 
