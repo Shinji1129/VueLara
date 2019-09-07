@@ -11,21 +11,46 @@
     <div class="panel" v-show="tab === 1">
       <form class="form" @submit.prevent="login">
         <label for="login_email">Email</label>
+          <div v-if="loginErrors">
+            <div v-if="loginErrors.email">
+              <span v-for="msg in loginErrors.email" :key="msg" class="errors">＊{{ msg }}</span>
+            </div>
+          </div>
         <input type="email" class="form_item" id="login_email" v-model="loginForm.email">
         <label for="login_password">パスワード</label>
+          <div v-if="loginErrors">
+            <div v-if="loginErrors.password">
+              <span v-for="msg in loginErrors.password" :key="msg" class="errors">＊{{ msg }}</span>
+            </div>
+          </div>
         <input type="password" class="form_item" id="login_password" v-model="loginForm.password">
         <div class="form_btn">
-          <button type="submit" class="btn submit_btn" >ログイン</button>
+          <button type="submit" class="btn submit_btn">ログイン</button>
         </div>
       </form>
     </div>
     <div class="panel" v-show="tab === 2">
       <form class="form" @submit.prevent="register">
         <label for="username">お名前</label>
+          <div v-if="registerErrors">
+            <div v-if="registerErrors.name">
+              <span v-for="msg in registerErrors.name" :key="msg" class="errors">＊{{ msg }}</span>
+            </div>
+          </div>
         <input type="text" class="form_item" id="username" v-model="registerForm.name">
         <label for="email">Email</label>
+          <div v-if="registerErrors">
+            <div v-if="registerErrors.email">
+              <span v-for="msg in registerErrors.email" :key="msg" class="errors">＊{{ msg }}</span>
+            </div>
+          </div>
         <input type="email" class="form_item" id="email" v-model="registerForm.email">
         <label for="password">パスワード</label>
+          <div v-if="registerErrors">
+            <div v-if="registerErrors.password">
+              <span v-for="msg in registerErrors.password" :key="msg" class="errors">＊{{ msg }}<br></span>
+            </div>
+          </div>
         <input type="password" class="form_item" id="password" v-model="registerForm.password">
         <label for="password-confirmation">パスワード（確認用）</label>
         <input type="password" class="form_item" id="password-confirmation" v-model="registerForm.password_confirmation">
@@ -38,6 +63,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
@@ -54,17 +81,45 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState({
+      apiStatus: state => state.auth.apiStatus,
+      loginErrors: state => state.auth.loginErrorMessages,
+      registerErrors: state => state.auth.registerErrorMessages
+    }),
+    ...mapGetters({
+      isLogin: 'auth/check'
+    })
+  },
   methods: {
     async login () {
       await this.$store.dispatch('auth/login', this.loginForm)
 
-      this.$router.push('/')
+      if (this.apiStatus) {
+        this.$router.push('/')
+      }
     },
     async register () {
       await this.$store.dispatch('auth/register', this.registerForm)
 
-      this.$router.push('/')
+      if (this.apiStatus) {
+        this.$router.push('/')
+      }
+    },
+    async logout () {
+      await this.$store.dispatch('auth/logout')
+
+      if (this.apiStatus) {
+        this.$router.push('/login')
+      }
+    },
+    clearError () {
+      this.$store.commit('auth/setLoginErrorMessages', null)
+      this.$store.commit('auth/setRegisterErrorMessages', null)
     }
+  },
+  created () {
+    this.clearError()
   }
 }
 </script>
