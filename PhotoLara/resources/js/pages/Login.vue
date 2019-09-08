@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   data () {
@@ -86,13 +86,11 @@ export default {
       apiStatus: state => state.auth.apiStatus,
       loginErrors: state => state.auth.loginErrorMessages,
       registerErrors: state => state.auth.registerErrorMessages
-    }),
-    ...mapGetters({
-      isLogin: 'auth/check'
     })
   },
   methods: {
     async login () {
+
       await this.$store.dispatch('auth/login', this.loginForm)
 
       if (this.apiStatus) {
@@ -103,14 +101,8 @@ export default {
       await this.$store.dispatch('auth/register', this.registerForm)
 
       if (this.apiStatus) {
-        this.$router.push('/')
-      }
-    },
-    async logout () {
-      await this.$store.dispatch('auth/logout')
 
-      if (this.apiStatus) {
-        this.$router.push('/login')
+        this.$router.push('/')
       }
     },
     clearError () {
