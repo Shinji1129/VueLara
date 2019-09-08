@@ -1,0 +1,9 @@
+.loader{
+  animation: flash 1s ease infinite alternate;
+}
+
+@keyframes flash {
+  50% {
+    opacity: 0;
+  }
+}

@@ -3,32 +3,43 @@
     <RouterLink class="brand" to="/">
     <h1>PhotoLara</h1>
     </RouterLink>
-    <div class="nav-menu">
-      <ul class="nav-list">
-        <li class="nav-item">
-          <button class="btn">
+    <div class="nav">
+      <ul class="nav--list">
+        <li class="nav--item">
+          <button class="button" @click="showForm = ! showForm">
             <i class="icon ion-md-add"></i>
             投稿する
           </button>
         </li>
-        <li v-if="isLogin" class="nav-item">
-          {{ username }}
+        <li v-if="isLogin" class="nav--item">
+          <i class="icon ion-md-person"></i>{{ username }}
         </li>
-        <li v-if="isLogin" class="nav-item">
-          <button class="btn btn-link" @click="logout">ログアウト</button>
+        <li v-if="isLogin" class="nav--item">
+          <button class="button button--link" @click="logout">ログアウト</button>
         </li>
-        <li v-else class="nav-item">
-          <RouterLink class="btn btn-link" to="/login">
+        <li v-else class="nav--item">
+          <RouterLink class="button button--link" to="/login">
           ログイン・新規登録
           </RouterLink>
         </li>
       </ul>
     </div>
+    <PhotoForm v-model="showForm" />
   </nav>
 </template>
 
 <script>
+import PhotoForm from './PhotoForm.vue'
+
 export default {
+  components: {
+    PhotoForm
+  },
+  data () {
+    return {
+      showForm: false
+    }
+  },
   computed: {
     isLogin () {
       return this.$store.getters['auth/check']

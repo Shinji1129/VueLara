@@ -1,0 +1,27 @@
+.form{
+  margin: 20px 0;
+}
+
+label{
+  font-size: 14px;
+  text-align: left!important;
+}
+
+input{
+  margin: 5px 0 30px 0;
+  outline: 0;
+}
+
+input[type=text],[type=email],[type=password]{
+  display: block;
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+}
+
+.errors{
+  font-size: 12px;
+  color: orangered;
+}
+
+

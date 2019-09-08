@@ -1,97 +1,192 @@
-body{
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   color: #333;
 }
 
-a{
+h1,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
   font-size: 16px;
   color: #333;
   text-decoration: none;
 }
-ul{
-  padding: 0;
-}
-li{
+
+li {
   list-style: none;
 }
 
-label{
-  font-size: 14px;
-  text-align: left!important;
+main {
+  margin: 50px 0;
 }
 
-input,button{
-  margin: 5px 0 20px 0;
-  outline: 0;
-}
-/************ header ************/
-.nav-menu>ul{
-  display: flex;
-}
-.nav-item{
-  margin-left: 1.5em;
-  font-size: 16px;
+img {
+  max-width: 100%;
 }
 
-/************ btn ************/
-.btn{
+button {
+  outline: none;
+}
+
+output {
+  display: block;
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.button {
   border: none;
   font-size: 16px;
 }
 
-.btn:hover{
+.button:hover {
   cursor: pointer;
+  background-color: #99cfff;
 }
 
-.submit_btn{
+.button--submit {
   width: 206px;
+  margin-top: 10px;
   padding: 5px 50px;
   background-color: #d4eafd;
 }
 
-.submit_btn:hover{
-  background-color: #99cfff;
+.button--form {
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  background-color: #d4eafd;
 }
 
-.icon{
+.form {
+  margin: 20px 0;
+}
+
+label {
+  font-size: 14px;
+  text-align: left !important;
+}
+
+input {
+  margin: 5px 0 30px 0;
+  outline: 0;
+}
+
+input[type=text],
+[type=email],
+[type=password] {
+  display: block;
+  width: 200px;
+  height: 30px;
   font-size: 16px;
 }
 
-/************ Login.vue ************/
-.container{
-  width: 300px;
-  margin: 0 auto;
+.errors {
+  font-size: 12px;
+  color: orangered;
 }
-.tab{
+
+.copy {
+  text-align: center;
+}
+
+.tab {
   text-align: center;
   display: flex;
 }
 
-.tab_item{
+.tab--item {
   padding: 5px;
   margin-right: 20px;
 }
 
-.tab_item:hover{
+.tab--item:hover {
   cursor: pointer;
   background-color: #d4eafd;
 }
 
-.errors{
-  font-size: 12px;
-  color: orangered;
+.nav {
+  float: right;
+  margin-right: 40px;
+  line-height: 70px;
 }
-/************ panel ************/
-input[type=text],[type=email],[type=password]{
-  display: block;
-  width: 200px;
-  height: 20px;
+
+.nav > ul {
+  display: flex;
+}
+
+.nav--item {
+  margin-left: 1.5em;
   font-size: 16px;
 }
 
-/************ Footer ************/
-.copy{
-  text-align: center;
+.navbar {
+  height: 70px;
 }
+
+.brand {
+  float: left;
+  margin-left: 30px;
+  line-height: 70px;
+  font-size: 24px;
+}
+
+.icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.photo-form {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  margin-right: 70px;
+  padding: 0 30px;
+  z-index: 10;
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  background: #f5f5f5;
+}
+
+.form--output > img {
+  width: 300px !important;
+  margin-bottom: 20px;
+}
+
+.loader {
+  -webkit-animation: flash 1s ease infinite alternate;
+          animation: flash 1s ease infinite alternate;
+}
+
+@-webkit-keyframes flash {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash {
+  50% {
+    opacity: 0;
+  }
+}
+
+.message {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  margin-right: 70px;
+  padding: 0 30px;
+  z-index: 10;
+  border: 1px solid #99cfff;
+  border-radius: 5px;
+  background: #d4eafd;
+}
+

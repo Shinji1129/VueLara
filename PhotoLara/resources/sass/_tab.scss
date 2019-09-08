@@ -1,0 +1,14 @@
+.tab{
+  text-align: center;
+  display: flex;
+
+  &--item{
+    padding: 5px;
+    margin-right: 20px;
+  }
+
+  &--item:hover{
+    cursor: pointer;
+    background-color: #d4eafd;
+  }
+}
