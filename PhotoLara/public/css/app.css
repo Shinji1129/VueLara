@@ -28,6 +28,8 @@ main {
 
 img {
   max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 button {
@@ -38,8 +40,23 @@ output {
   display: block;
 }
 
+.grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.grid--item {
+  margin-bottom: 30px;
+  width: 32%;
+}
+
+figure {
+  margin: 0;
+}
+
 .container {
-  width: 300px;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -64,6 +81,12 @@ output {
   border: 1px solid #f0f0f0;
   border-radius: 5px;
   background-color: #d4eafd;
+}
+
+.button--like {
+  padding: 0;
+  border: none;
+  width: 0;
 }
 
 .form {
@@ -139,11 +162,6 @@ input[type=text],
   font-size: 24px;
 }
 
-.icon {
-  font-size: 16px;
-  margin-right: 5px;
-}
-
 .photo-form {
   position: absolute;
   top: 70px;
@@ -188,5 +206,70 @@ input[type=text],
   border: 1px solid #99cfff;
   border-radius: 5px;
   background: #d4eafd;
+}
+
+.photo {
+  position: relative;
+}
+
+.photo--image {
+  height: 250px;
+  width: 100%;
+}
+
+.photo--image:hover {
+  opacity: 0.6;
+  cursor: zoom-in;
+}
+
+.photo--like {
+  position: absolute;
+  top: 13px;
+  right: 90px;
+}
+
+.photo--like:hover {
+  cursor: pointer;
+}
+
+.photo--down {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.photo--username {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+}
+
+.icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.ion-md-archive {
+  padding: 0px 6px;
+  color: #99cfff;
+  background: #ffffff90;
+  border-radius: 3px;
+}
+
+.ion-md-heart {
+  padding: 3px 6px;
+  color: #ff6f8e;
+  background: #ffffff90;
+  border-radius: 3px;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.arrow {
+  margin: 0 20px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
