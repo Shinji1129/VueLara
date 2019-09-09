@@ -1991,6 +1991,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     item: {
@@ -3968,7 +3972,7 @@ var render = function() {
         ? _c(
             "RouterLink",
             {
-              staticClass: "button",
+              staticClass: "button arrow",
               attrs: { to: "/?page=" + (_vm.currentPage - 1) }
             },
             [_vm._v("NEW")]
@@ -3979,7 +3983,7 @@ var render = function() {
         ? _c(
             "RouterLink",
             {
-              staticClass: "button",
+              staticClass: "button arrow",
               attrs: { to: "/?page=" + (_vm.currentPage + 1) }
             },
             [_vm._v("OLD")]
@@ -4017,8 +4021,8 @@ var render = function() {
     [
       _c("figure", { staticClass: "photo--wrap" }, [
         _c("img", {
-          staticClass: "photo--img",
-          attrs: { src: _vm.item.url, alt: "Photo by" + _vm.item.owner.name }
+          staticClass: "photo--image",
+          attrs: { src: _vm.item.url, alt: "Photo by " + _vm.item.owner.name }
         })
       ]),
       _vm._v(" "),

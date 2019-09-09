@@ -1,7 +1,11 @@
 <template>
   <div class="photo">
     <figure class="photo--wrap">
-      <img class="photo--img" :src="item.url" :alt="`Photo by${item.owner.name}`">
+      <img
+      class="photo--image"
+      :src="item.url"
+      :alt="`Photo by ${item.owner.name}`"
+      >
     </figure>
     <RouterLink class="photo--overlay" :to="`/photos/${item.id}`" :title="`View the photo by ${item.owner.name}`">
     <div class="photo--controls">

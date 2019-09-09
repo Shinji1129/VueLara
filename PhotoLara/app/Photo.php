@@ -21,7 +21,7 @@ class Photo extends Model
         'id', 'owner', 'url',
     ];
 
-    protected $perPage = 3;
+    protected $perPage = 6;
 
     public function __construct(array $attributes = [])
     {

@@ -1,7 +1,7 @@
 <template>
   <div class="pagination">
-    <RouterLink v-if="! isFirstPage" :to="`/?page=${currentPage - 1}`" class="button">NEW</RouterLink>
-    <RouterLink v-if="! isLastPage" :to="`/?page=${currentPage + 1}`" class="button">OLD</RouterLink>
+    <RouterLink v-if="! isFirstPage" :to="`/?page=${currentPage - 1}`" class="button arrow">NEW</RouterLink>
+    <RouterLink v-if="! isLastPage" :to="`/?page=${currentPage + 1}`" class="button arrow">OLD</RouterLink>
   </div>
 </template>
 
