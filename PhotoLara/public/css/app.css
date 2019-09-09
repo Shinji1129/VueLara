@@ -66,6 +66,12 @@ output {
   background-color: #d4eafd;
 }
 
+.button--like {
+  padding: 0;
+  border: none;
+  width: 0;
+}
+
 .form {
   margin: 20px 0;
 }
@@ -139,11 +145,6 @@ input[type=text],
   font-size: 24px;
 }
 
-.icon {
-  font-size: 16px;
-  margin-right: 5px;
-}
-
 .photo-form {
   position: absolute;
   top: 70px;
@@ -188,5 +189,51 @@ input[type=text],
   border: 1px solid #99cfff;
   border-radius: 5px;
   background: #d4eafd;
+}
+
+.photo {
+  position: relative;
+}
+
+.photo--img:hover {
+  opacity: 0.6;
+  cursor: zoom-in;
+}
+
+.photo--like {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+}
+
+.photo--down {
+  position: absolute;
+  bottom: 10px;
+  right: 40px;
+}
+
+.photo--username {
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+}
+
+.icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.ion-md-archive {
+  padding: 0px 6px;
+  color: #99cfff;
+  background: #ffffff90;
+  border-radius: 3px;
+}
+
+.ion-md-heart {
+  padding: 3px 6px;
+  color: #ff6f8e;
+  background: #ffffff90;
+  border-radius: 3px;
 }
 
