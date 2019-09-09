@@ -13,7 +13,18 @@ class PhotoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'download']);
+    }
+
+    /**
+     * 写真一覧
+     */
+    public function index()
+    {
+        $photos = Photo::with(['owner'])
+            ->orderBy(Photo::CREATED_AT, 'desc')->paginate();
+
+            return $photos;
     }
 
     /**
@@ -46,14 +57,21 @@ class PhotoController extends Controller
     }
 
     /**
-     * 写真一覧
+     * 写真ダウンロード
+     * @param Photo $photo
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function download(Photo $photo)
     {
-        $photos = Photo::with(['owner'])
-            ->orderBy(Photo::CREATED_AT, 'desc')->paginate();
+        if (! Storage::cloud()->exists($photo->filename)) {
+            abort(404);
+        }
 
-            return $photos;
+        $headers = [
+            'Content-Type' => 'application/octet-stream',
+            'Content-Disposition' => 'attachment; filename="' . $photo->filename . '"',
+        ];
+
+        return response(Storage::cloud()->get($photo->filename), 200, $headers);
     }
-
 }

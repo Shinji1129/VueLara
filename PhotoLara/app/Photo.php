@@ -57,7 +57,7 @@ class Photo extends Model
     }
 
     /**
-     * アクセサ　- url
+     * アクセサ - url
      * @return string
      */
     public function getUrlAttribute()
