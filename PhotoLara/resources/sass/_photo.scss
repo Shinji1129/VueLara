@@ -7,18 +7,12 @@
   }
 
   &--image:hover{
-    opacity: 0.6;
-    cursor: zoom-in;
   }
 
   &--like{
     position: absolute;
     top: 13px;
     right: 90px;
-  }
-
-  &--like:hover{
-    cursor: pointer;
   }
 
   &--down{
@@ -29,8 +23,24 @@
 
   &--username{
     position: absolute;
+    color: #fff;
     bottom: 10px;
     left: 20px;
   }
+
+  &--overlay{
+    position: absolute;
+    height: 250px;
+    width: 100%;
+    top: 0;
+    z-index: 0.5;
+  }
+
+  &--overlay:hover{
+    cursor: zoom-in;
+    background: #555;
+    opacity: 0.7;
+  }
+
 
 }
