@@ -6,6 +6,7 @@ body {
 }
 
 h1,
+h2,
 ul,
 p {
   margin: 0;
@@ -55,6 +56,10 @@ figure {
   margin: 0;
 }
 
+figcaption {
+  display: inline-block;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -87,6 +92,14 @@ figure {
   padding: 0;
   border: none;
   width: 0;
+}
+
+.button--detail {
+  margin-right: 30px;
+}
+
+.button--detail-down {
+  padding: 0 10px;
 }
 
 .form {
@@ -217,19 +230,10 @@ input[type=text],
   width: 100%;
 }
 
-.photo--image:hover {
-  opacity: 0.6;
-  cursor: zoom-in;
-}
-
 .photo--like {
   position: absolute;
   top: 13px;
   right: 90px;
-}
-
-.photo--like:hover {
-  cursor: pointer;
 }
 
 .photo--down {
@@ -240,8 +244,23 @@ input[type=text],
 
 .photo--username {
   position: absolute;
+  color: #fff;
   bottom: 10px;
   left: 20px;
+}
+
+.photo--overlay {
+  position: absolute;
+  height: 250px;
+  width: 100%;
+  top: 0;
+  z-index: 0.5;
+}
+
+.photo--overlay:hover {
+  cursor: zoom-in;
+  background: #555;
+  opacity: 0.7;
 }
 
 .icon {
@@ -249,16 +268,20 @@ input[type=text],
   margin-right: 5px;
 }
 
+.icon:hover {
+  cursor: pointer;
+}
+
 .ion-md-archive {
   padding: 0px 6px;
-  color: #99cfff;
+  color: #51aeff;
   background: #ffffff90;
   border-radius: 3px;
 }
 
 .ion-md-heart {
   padding: 3px 6px;
-  color: #ff6f8e;
+  color: #ff5177;
   background: #ffffff90;
   border-radius: 3px;
 }
@@ -271,5 +294,36 @@ input[type=text],
   margin: 0 20px;
   font-size: 24px;
   font-weight: 700;
+}
+
+.photo-detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.photo-detail--image:hover {
+  cursor: zoom-in;
+}
+
+.photo-detail--column {
+  display: block !important;
+}
+
+.photo-detail--contents {
+  font-size: 20px;
+  position: absolute;
+  top: -35px;
+}
+
+.photo-detail--comment {
+  min-width: 200px;
+  margin: 0 20px;
+}
+
+.photo-detail--btns {
+  margin-left: 20px;
+  display: inline-block;
 }
 

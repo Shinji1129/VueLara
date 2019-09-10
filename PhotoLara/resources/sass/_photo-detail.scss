@@ -1,0 +1,31 @@
+.photo-detail{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &--image:hover{
+    cursor: zoom-in
+  }
+
+  &--column{
+    display: block!important;
+  }
+
+  &--contents{
+    font-size: 20px;
+    position: absolute;
+    top: -35px;
+  }
+
+  &--comment{
+    min-width: 200px;
+   margin: 0 20px;
+  }
+
+  &--btns{
+    margin-left: 20px;
+    display: inline-block;
+
+  }
+}

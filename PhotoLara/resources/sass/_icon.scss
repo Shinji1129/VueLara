@@ -1,18 +1,23 @@
 .icon{
   font-size: 16px;
   margin-right: 5px;
+
+  &:hover{
+    cursor: pointer;
+  }
+  
 }
 
 .ion-md-archive{
   padding: 0px 6px;
-  color: #99cfff;
+  color: #51aeff;
   background: #ffffff90;
   border-radius: 3px;
 }
 
 .ion-md-heart{
   padding: 3px 6px;
-  color: #ff6f8e;
+  color: #ff5177;
   background: #ffffff90;
   border-radius: 3px;
 }
