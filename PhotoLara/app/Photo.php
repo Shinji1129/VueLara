@@ -14,12 +14,13 @@ class Photo extends Model
 
     /** JSONに含めるアクセサ */
     protected $appends = [
-        'url',
+        'url', 'likes_count', 'liked_by_user',
      ];
 
     /** JSONに含める属性 */
     protected $visible = [
         'id', 'owner', 'url', 'comments',
+        'likes_count', 'liked_by_user',
     ];
 
     protected $perPage = 6;
@@ -57,6 +58,30 @@ class Photo extends Model
         }
 
         return $id;
+    }
+
+    /**
+     * アクセサ - likes_count
+     * @return int
+     */
+    public function getLikesCountAttribute()
+    {
+        return $this->likes->count();
+    }
+
+    /**
+     * アクセサ - liked_by_user
+     * @return boolean
+     */
+    public function getLikedByUserAttribute()
+    {
+        if (Auth::guest()) {
+            return false;
+        }
+
+        return $this->likes->contains(function ($user) {
+            return $user->id === Auth::user()->id;
+        });
     }
 
     /**
