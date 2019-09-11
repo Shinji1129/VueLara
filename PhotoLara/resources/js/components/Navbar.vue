@@ -7,8 +7,7 @@
       <ul class="nav--list">
         <li class="nav--item">
           <button class="button" @click="showForm = ! showForm">
-            <i class="icon ion-md-add"></i>
-            投稿する
+            <i class="icon ion-md-add"></i>投稿する
           </button>
         </li>
         <li v-if="isLogin" class="nav--item">
@@ -53,7 +52,7 @@ export default {
       await this.$store.dispatch('auth/logout')
 
       this.$router.push('/')
-    }
+    },
   }
 }
 </script>

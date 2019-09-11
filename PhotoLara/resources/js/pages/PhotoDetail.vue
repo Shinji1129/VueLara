@@ -14,16 +14,22 @@
     <div class="photo-detail--contents">
       <figcaption>Posted by {{ photo.owner.name }}</figcaption>
         <div class="photo-detail--btns">
-          <button class="button button--like button--detail" title="Like photo">
-            <i class="icon ion-md-heart"></i>
+          <button
+            class="button button--like"
+            :class="{ 'button--liked': photo.liked_by_user }"
+            title="Like photo"
+            @click="onLikeClick"
+          >
+            <i class="icon ion-md-heart"></i>{{ photo.likes_count }}
           </button>
           <a
             :href="`/photos/${photo.id}/download`"
-            class="button button--detail-down"
+            class="button button--down"
             title="Download photo"
           >
             <i class="icon ion-md-archive"></i>Download
           </a>
+          <a class="photo-detail--prev" href="/"><i class="icon ion-md-arrow-up"></i>戻る</a>
         </div>
     </div>
     <div class="photo-detail--comment">
@@ -51,7 +57,13 @@
           </div>
         <textarea class="form--item" v-model="commentContent"></textarea>
         <div class="form--button">
-          <button type="submit" class="button button--inverse">投稿する</button>
+          <button
+            type="submit"
+            class="button button--post"
+            @click="onCommentClick"
+          >
+          コメントする
+          </button>
         </div>
       </form>
     </div>
@@ -77,7 +89,54 @@ export default {
       fullWidth: false
     }
   },
+    computed: {
+    isLogin () {
+      return this.$store.getters['auth/check']
+    }
+  },
   methods: {
+     onCommentClick () {
+      if (! this.isLogin) {
+        alert('コメントするにはログインしてください。')
+        return false
+      }　else {
+        return true
+      }
+    },
+     onLikeClick () {
+      if (! this.isLogin) {
+        alert('いいね機能を使うにはログインしてください。')
+        return false
+      }
+
+      if (this.photo.liked_by_user) {
+        this.unlike()
+      } else {
+        this.like()
+      }
+    },
+    async like () {
+      const response = await axios.put(`/api/photos/${this.id}/like`)
+
+      if (response.status !== OK) {
+        this.$store.commit('error/setCode', response.status)
+        return false
+      }
+
+      this.$set(this.photo, 'likes_count', this.photo.likes_count + 1)
+      this.$set(this.photo, 'liked_by_user', true)
+    },
+    async unlike () {
+      const response = await axios.delete(`/api/photos/${this.id}/like`)
+
+      if (response.status !== OK) {
+        this.$store.commit('error/setCode', response.status)
+        return false
+      }
+
+      this.$set(this.photo, 'likes_count', this.photo.likes_count - 1)
+      this.$set(this.photo, 'liked_by_user', false)
+    },
     async fetchPhoto () {
       const response = await axios.get(`/api/photos/${this.id}`)
 
@@ -110,7 +169,7 @@ export default {
         response.data,
         ...this.photo.comments
       ])
-    }
+    },
   },
   watch: {
     $route: {

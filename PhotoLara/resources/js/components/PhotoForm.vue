@@ -3,7 +3,11 @@
     <div v-show="loading" class="loading-panel">
       <Loader></Loader>
     </div>
-    <form v-show="! loading" class="form" @submit.prevent="submit">
+    <form
+      v-show="! loading"
+      class="form"
+      @submit.prevent="submit"
+      >
       <div class="errors" v-if="errors">
         <div v-if="errors.photo">
           <span v-for="msg in errors.photo" :key="msg">{{ msg }}<br></span>
@@ -14,7 +18,13 @@
         <img :src="preview" alt="">
       </output>
       <div class="form--btn">
-        <button type="submit" class="button button--form">投稿</button>
+        <button
+          type="submit"
+          class="button button--form"
+          @click="onPostClick"
+        >
+        投稿
+        </button>
       </div>
     </form>
   </div>
@@ -42,7 +52,20 @@ export default {
       errors: null
     }
   },
+  computed: {
+    isLogin () {
+      return this.$store.getters['auth/check']
+    }
+  },
   methods: {
+    onPostClick () {
+      if (! this.isLogin) {
+        alert('投稿するにはログインしてください。')
+        return false
+      }　else {
+        return true
+      }
+    },
     onFileChange (event) {
       if (event.target.files.length === 0) {
         this.reset()
