@@ -43,7 +43,7 @@ output {
 
 .grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -58,6 +58,10 @@ figure {
 
 figcaption {
   display: inline-block;
+}
+
+.count {
+  font-size: 17px;
 }
 
 .container {
@@ -89,16 +93,17 @@ figcaption {
 }
 
 .button--like {
-  padding: 0;
+  padding: 3px 6px;
   border: none;
-  width: 0;
+  background: #ffffff90;
+  border-radius: 3px;
 }
 
-.button--detail {
-  margin-right: 30px;
+.button--like:hover {
+  background: #ffffff90;
 }
 
-.button--detail-down {
+.button--down {
   padding: 0 10px;
 }
 
@@ -240,8 +245,8 @@ textarea {
 
 .photo--like {
   position: absolute;
-  top: 13px;
-  right: 90px;
+  top: 10px;
+  right: 70px;
 }
 
 .photo--down {
@@ -290,8 +295,11 @@ textarea {
 .ion-md-heart {
   padding: 3px 6px;
   color: #ff5177;
-  background: #ffffff90;
-  border-radius: 3px;
+}
+
+.ion-md-arrow {
+  padding: 3px 6px;
+  color: #333;
 }
 
 .pagination {
@@ -338,6 +346,11 @@ textarea {
   padding: 5px 10px;
   margin-bottom: 10px;
   border: 1px dashed #99cfff;
+}
+
+.photo-detail--prev {
+  margin-left: 30px;
+  font-weight: 700;
 }
 
 .photo-detail--btns {

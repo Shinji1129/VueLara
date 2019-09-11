@@ -22,16 +22,17 @@
   }
 
   &--like{
-    padding: 0;
+    padding: 3px 6px;
     border: none;
-    width: 0;
+    background: #ffffff90;
+    border-radius: 3px;
   }
 
-  &--detail{
-    margin-right: 30px;
+  &--like:hover{
+    background: #ffffff90;
   }
 
-  &--detail-down{
+  &--down{
     padding: 0 10px;
   }
 }
