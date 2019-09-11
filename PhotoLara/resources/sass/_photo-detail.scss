@@ -4,12 +4,17 @@
   justify-content: space-between;
   position: relative;
 
+  &--panel{
+    margin-bottom: 0px;
+  }
+
   &--image:hover{
     cursor: zoom-in
   }
 
   &--column{
-    display: block!important;
+    display: block;
+
   }
 
   &--contents{
@@ -19,9 +24,15 @@
   }
 
   &--comment{
-    min-width: 200px;
-   margin: 0 20px;
+   min-width: 250px;
+   padding: 0 20px;
   }
+
+  &--commentContent{
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px dashed #99cfff;
+   }
 
   &--btns{
     margin-left: 20px;
