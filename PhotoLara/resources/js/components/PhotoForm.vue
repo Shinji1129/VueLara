@@ -117,10 +117,10 @@ export default {
 
       this.$store.commit('message/setContent', {
         content: '投稿されました!',
-        timeout: 6000
+        timeout: 5000
       })
 
-      this.$router.push(`/photos/${response.data.id}`)
+      this.$router.push(`/photos/${response.data.id}`).catch(err => {})
     }
   }
 }
