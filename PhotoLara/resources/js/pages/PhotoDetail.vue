@@ -28,14 +28,39 @@
     </div>
     <div class="photo-detail--comment">
       <h2 class="photo-detail--title">Comments</h2>
-      <p>testtesttesttesttesttesttesttesttesttesttest</p>
+      <ul v-if="photo.comments.length > 0" class="photo-detail--comments">
+        <li
+          v-for="comment in photo.comments"
+          :key="comment.content"
+          class="photo-detail--commentContent"
+        >
+          <p class="photo-detail--commentAuth">
+            {{ comment.author.name }}:
+          </p>
+          <p class="photo-detail--commentBody">
+            {{ comment.content }}
+          </p>
+        </li>
+        </ul>
+        <p v-else>コメントはありません。</p>
+      <form @submit.prevent="addComment" class="form">
+        <div v-if="commentErrors">
+            <div v-if="commentErrors.content">
+              <span v-for="msg in commentErrors.content" :key="msg" class="errors">＊{{ msg }}</span>
+            </div>
+          </div>
+        <textarea class="form--item" v-model="commentContent"></textarea>
+        <div class="form--button">
+          <button type="submit" class="button button--inverse">投稿する</button>
+        </div>
+      </form>
     </div>
     </div>
   </div>
 </template>
 
 <script>
-import { OK } from '../util'
+import { OK, CREATED, UNPROCESSABLE_ENTITY } from '../util'
 
 export default {
   props: {
@@ -47,6 +72,8 @@ export default {
   data () {
     return {
       photo: null,
+      commentContent: '',
+      commentErrors: null,
       fullWidth: false
     }
   },
@@ -60,6 +87,29 @@ export default {
       }
 
       this.photo = response.data
+    },
+    async addComment () {
+      const response = await axios.post(`/api/photos/${this.id}/comments`, {
+        content: this.commentContent
+      })
+
+      if (response.status === UNPROCESSABLE_ENTITY) {
+      this.commentErrors = response.data.errors
+      return false
+      }
+
+      this.commentContent = ''
+      this.commentErrors = null
+
+      if (response.status !== CREATED) {
+      this.$store.commit('error/setCode', response.status)
+      return false
+      }
+
+      this.$set(this.photo, 'comments', [
+        response.data,
+        ...this.photo.comments
+      ])
     }
   },
   watch: {
