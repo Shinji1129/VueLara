@@ -76,7 +76,6 @@ figcaption {
 
 .button:hover {
   cursor: pointer;
-  background-color: #99cfff;
 }
 
 .button--submit {
@@ -84,6 +83,10 @@ figcaption {
   margin-top: 10px;
   padding: 5px 50px;
   background-color: #d4eafd;
+}
+
+.button--submit:hover {
+  background-color: #99cfff;
 }
 
 .button--form {
@@ -99,12 +102,12 @@ figcaption {
   border-radius: 3px;
 }
 
-.button--like:hover {
-  background: #ffffff90;
-}
-
 .button--down {
   padding: 0 10px;
+}
+
+.button--blue:hover {
+  background-color: #99cfff;
 }
 
 .form {
@@ -249,6 +252,10 @@ textarea {
   right: 70px;
 }
 
+.photo--action-liked {
+  background-color: #ffd6df;
+}
+
 .photo--down {
   position: absolute;
   top: 10px;
@@ -272,8 +279,8 @@ textarea {
 
 .photo--overlay:hover {
   cursor: zoom-in;
-  background: #555;
-  opacity: 0.7;
+  background: #333;
+  opacity: 0.5;
 }
 
 .icon {
@@ -290,6 +297,10 @@ textarea {
   color: #51aeff;
   background: #ffffff90;
   border-radius: 3px;
+}
+
+.ion-md-archive:hover {
+  background-color: #99cfff;
 }
 
 .ion-md-heart {

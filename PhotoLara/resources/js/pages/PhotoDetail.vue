@@ -16,7 +16,7 @@
         <div class="photo-detail--btns">
           <button
             class="button button--like"
-            :class="{ 'button--liked': photo.liked_by_user }"
+            :class="{ 'photo--action-liked': photo.liked_by_user }"
             title="Like photo"
             @click="onLikeClick"
           >

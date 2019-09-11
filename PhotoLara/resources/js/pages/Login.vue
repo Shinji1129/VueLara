@@ -94,7 +94,7 @@ export default {
       await this.$store.dispatch('auth/login', this.loginForm)
 
       if (this.apiStatus) {
-        this.$router.push('/')
+        this.$router.push('/').catch(err => {})
       }
     },
     async register () {
@@ -102,7 +102,7 @@ export default {
 
       if (this.apiStatus) {
 
-        this.$router.push('/')
+        this.$router.push('/').catch(err => {})
       }
     },
     clearError () {

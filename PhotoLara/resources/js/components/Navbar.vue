@@ -6,7 +6,7 @@
     <div class="nav">
       <ul class="nav--list">
         <li class="nav--item">
-          <button class="button" @click="showForm = ! showForm">
+          <button class="button button--blue" @click="showForm = ! showForm">
             <i class="icon ion-md-add"></i>投稿する
           </button>
         </li>
@@ -14,7 +14,7 @@
           <i class="icon ion-md-person"></i>{{ username }}
         </li>
         <li v-if="isLogin" class="nav--item">
-          <button class="button button--link" @click="logout">ログアウト</button>
+          <button class="button button--blue" @click="logout">ログアウト</button>
         </li>
         <li v-else class="nav--item">
           <RouterLink class="button button--link" to="/login">
@@ -51,7 +51,7 @@ export default {
     async logout () {
       await this.$store.dispatch('auth/logout')
 
-      this.$router.push('/')
+      this.$router.push('/').catch(err => {})
     },
   }
 }
